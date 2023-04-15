@@ -1,0 +1,19 @@
+*{
+  margin:0; padding:0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.col-md-12{
+  max-width: 85%;
+  margin:20px auto;
+}
+.card-columns{
+  columns:3 250px;
+  gap:15px;
+}
+
+.card{
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 100%;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>My Imagestock</title>
+ <style>
+         *{
+
+         }
+          .bg{
+         background:#3f51b5!important;
+          }
+          .list-group-item.active{
+         background:#3f51b5!important;
+         border-color:#3f51b5!important;
+          }
+
+         .body{
+          margin: 0%;
+          padding: 0%;
+           /*filter.invert(1) hue-rotate(180deg);*/
+         }
+
+      </style>
+</head>
+<body >
+{% include 'nabbar.html' %}
+
+ <div class="container-fluid">
+<!--  main code-->
+   <div class="row" >
+      <div class="col-md-12" >
+
+          <div class="row mt-3">
+
+              <div class="col-md-12" >
+                
+                  <div class="card-columns" style="display:flex;">
+                    
+                    {% for t in allpost %}
+
+                      <div class="card" style="width: 32%; height: 350px;" >
+                        <img class="card-img-top"  width="0%" height="300px" onclick="showModalwithImage('{{t.image}}')" src="/media/{{t.image}}" alt="Card image cap">
+                        <div class="card-body" style="display:flex; padding:0px; padding-top:10px; width:100% ">
+                        <div style="width:40%">
+                          <h4 class="card-title" style="margin-left:10px;">{{t.title}}</h4>
+                          </div>
+                         <!-- <p class="card-text">{{t.description}}</p>-->
+                         <div style="width:60%">
+                          <a href="#" style="margin-left:20px; height:30px; width:60px; padding:0px" class="btn btn-primary" onclick="showModalwithImage('{{t.image}}')">View</a>
+                          <a href="" style="margin-left:5px; height:30px; width:100px; padding:0px"  class="btn btn-primary">Pay &#8377; {{t.amount}}</a>
+                          <!--  <a href="{{t.image.url}}"  style="margin-left:5px; height:30px; width:100px; padding:0px" download="{{t.image.url}}" class="btn btn-primary">Download</a>-->
+                        </div>
+                      </div>
+                    </div>
+                 {% endfor %}
+                  </div>
+                  </div>
+              </div>
+          </div>
+
+
+        </div>
+   </div>
+ </div>
+
+<!-- Button trigger modal -->
+
+{% include 'card.html'%}
+<!-- Modal -->
+<!--<div class="modal" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">My Imagestock</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="#" id="image-show" class="img-fluid" alt="">
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </div>
+  </div>
+</div>
+-->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       <script>
+
+           function showModalwithImage(imageUrl)
+           {
+            $('#image-modal').modal('show')
+             $('#image-show').attr('src',`/media/${imageUrl}`)
+
+           }
+
+       </script>
+
+{% include 'about.html' %}
+ </body>
+</html>

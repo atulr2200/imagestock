@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>My Imagestock</title>
+      <style>
+
+            *{
+              margin:0; padding:0;
+              box-sizing: border-box;
+              font-family: 'Poppins', sans-serif;
+            }
+            .container-fluid.card{
+              columns:3 250px;
+              gap:15px;
+              
+              position: relative;
+              text-align: center;
+              color: white;
+            }
+            .container-fluid{
+              max-width: 85%;
+              margin:20px auto;
+            }
+            
+            .container-fluid div .card img{
+              margin-bottom: 0px;
+              border-radius: 5px;
+              width: 100%;
+            }
+            body
+            {
+            padding:0;
+            margin:0;
+            }
+            .bg
+            {
+              color: black  ;
+              background:#3f51b5!important;
+             }
+             .list-group-item.active
+             {
+             background:#3f51b5!important;
+             border-color:#3f51b5!important;
+             }
+          .container-fluid .card div .btn
+          {
+              background-color: transparent;
+              border-radius: 1px;
+              border-color: aliceblue;
+          }
+      </style>
+  </head>
+
+  <body>
+
+
+  {% include 'nabbar.html' %}
+
+ <div class="container-fluid">
+<!--  main code-->
+  <div class="row">
+
+     <!-- <div class="col-md-2" >
+          <div class="list-group mt-3" style="position:sticky; top:70px;">
+  <a href="/home" class="list-group-item list-group-item-action active">
+All Images  </a>
+              {% for i in cats %}
+
+                    <a href="/category/{{i.pk}}" class="list-group-item list-group-item-action">{{i.title}}</a>
+
+               {% endfor %}
+           </div>
+
+      </div>-->
+      <div class="col-md-12">
+
+          <div class="row mt-3">
+
+              <div class="col-md-12">
+                  <div class="card-columns" style="display:flex;">
+                    {% for t in images %}
+
+                      <div class="card">
+                       <img class="card-img-top" onclick="showModalwithImage('{{t.image}}')" src="/media/{{t.image}}" alt="Card image cap">
+                       <div style=" position: absolute;bottom: 13px;left: 30px; color: aliceblue;">
+                              
+                      <h3>{{t.title}}</h3> 
+                      </div>
+                      <div style=" position: absolute;bottom: 20px;left: 90px;">
+                        <a href="#" class="btn btn-primary"style=" margin-left:50px; height:30px; width:60px; padding-top:3px" onclick="showModalwithImage('{{t.image}}')"><b>View</b></a>
+                          
+                        <a href="" style="margin-left:15px; height:30px; width:100px; padding-top:3px"  class="btn btn-primary"><b> Pay &#8377; {{t.amount}}</b></a>
+                       <!-- <a href="{{t.image.url}}" style="margin-left:5px; height:30px; width:100px; padding:0px" download="{{t.image.url}}" class="btn btn-primary">Download</a>-->
+                       
+                      
+                        
+                            
+                         <!-- <p class="card-text">{{t.description}}</p>-->
+                        </div>
+                      </div>
+                {% endfor %}
+                  </div>
+
+              </div>
+          </div>
+
+
+    </div>
+
+  <!--addsons add
+      <div class="col-md-2">
+
+      </div>-->
+
+  </div>
+
+<!-- Button trigger modal -->
+</div>
+
+  <!-- Modal -->
+   <div class="modal" id="image-modal" tabindex="-1" style="width:100%;padding:0px; margin:0;" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        
+        <h2 class="title" id="image-title"></h2>
+        
+        <button type="button" class="close" style="" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body text-center">
+        <img src="#"   style=" width:100%; height:550px;" id="image-show" class="img-fluid" alt="">
+      </div>
+      <!--<div class="modal-footer ">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>-->
+      </div>
+  </div>
+   </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       <script>
+
+           function showModalwithImage(imageUrl)
+           {
+            $('#image-modal').modal('show')
+             $('#image-show').attr('src',`/media/${imageUrl}`)
+             
+             $('#image-title').modal(`/${imageUrl}`)
+           }
+       </script>
+      {% include 'about.html' %}
+  </body>
+</html>
