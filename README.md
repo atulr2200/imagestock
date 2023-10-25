@@ -12,9 +12,15 @@ Register form :-
 
 ![image](https://github.com/atulr2200/imagestock/assets/130772262/51b7bed1-f4e9-41d8-b70c-a790c3a85944)
 
-3.Home page:
+ Home page:
 
 ![image](https://github.com/atulr2200/imagestock/assets/130772262/fff12d0d-0183-42c2-b856-9502323fe370)
+
+New Home page:
+
+![localhost_8000_home_](https://github.com/atulr2200/imagestock/assets/130772262/fcec8ee7-aaca-4186-816f-548eab058ad7)
+
+
 
 Conclusion
 
